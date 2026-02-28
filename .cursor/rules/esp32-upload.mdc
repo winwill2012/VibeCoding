@@ -1,0 +1,36 @@
+---
+description: ESP32 代码更新完成后自动上传到芯片
+globs: src/**/*,platformio.ini,include/**/*
+alwaysApply: false
+---
+
+# ESP32 代码更新后自动烧录
+
+本规则仅在此 PlatformIO + ESP32 项目中生效。
+
+## 工作流程
+
+当你完成对以下文件的**代码更新**后，必须**立即执行上传**到 ESP32 芯片：
+
+- `src/` 下任意源文件（如 `main.cpp`）
+- `platformio.ini`（配置变更可能影响编译/烧录）
+- `include/` 下头文件
+
+## 执行方式
+
+在项目根目录（含 `platformio.ini` 的目录）执行：
+
+```bash
+pio run -t upload
+```
+
+若需指定环境（如多环境配置）：
+
+```bash
+pio run -e esp32-wroom-32e -t upload
+```
+
+## 说明
+
+- 上传前无需单独执行 `pio run` 编译，`upload` 会先编译再烧录。
+- **不要询问用户**，完成代码更新后直接执行上传，无需确认。
