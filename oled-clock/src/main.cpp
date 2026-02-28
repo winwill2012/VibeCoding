@@ -1,12 +1,12 @@
 /**
  * @file main.cpp
- * @brief ESP32 + SH1106 OLED：主入口，WiFi/NTP/按键与状态机
+ * @brief ESP32 + SH1106 OLED：主入口，智能配网 / WiFi / NTP / 按键与状态机
  */
 #include <Arduino.h>
 #include <WiFi.h>
+#include <WiFiManager.h>
 #include <time.h>
 
-#include "wifi_config.h"
 #include "buttons.h"
 #include "app_state.h"
 #include "display.h"
@@ -39,17 +39,15 @@ void setup() {
     displayInit();
     displayBootScreen(true, true, u8"正在连接 WiFi", u8"请稍候...");
 
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(WIFI_SSID, WIFI_PASS);
-    int w = 0;
-    while (WiFi.status() != WL_CONNECTED && w < 30) {
-        delay(500);
-        w++;
-    }
-
-    if (WiFi.status() != WL_CONNECTED) {
-        displayBootScreen(true, false, u8"WiFi 连接失败", u8"请检查 SSID 与密码");
-        Serial.println("WiFi connect failed");
+    WiFiManager wm;
+    wm.setConfigPortalTimeout(120);   // 配网页超时 2 分钟
+    wm.setConnectTimeout(30);         // 连接路由器超时 30 秒
+    wm.setMinimumSignalQuality(10);   // 信号强度至少 10%
+    // 若已有保存的 WiFi 则自动连接；否则或连接失败则启动配网 AP「OLEDClock」
+    bool connected = wm.autoConnect("OLEDClock");
+    if (!connected) {
+        displayBootScreen(true, false, u8"WiFi 连接失败", u8"请用手机连 OLEDClock 配网");
+        Serial.println("WiFi: connect failed, restart to reconfigure");
         for (;;) delay(1000);
     }
 
