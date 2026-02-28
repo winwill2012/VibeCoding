@@ -80,16 +80,34 @@ pio device monitor
 
 ```
 oled-clock/
-├── platformio.ini    # PlatformIO 配置与依赖
+├── platformio.ini       # PlatformIO 配置与依赖
 ├── src/
-│   ├── main.cpp      # 主逻辑、界面、NTP/天气/Web
-│   ├── buttons.cpp   # 三键检测（单击/双击/长按）
-│   ├── buttons.h
-│   └── bitmap.h      # 大数字/小数字等位图
+│   ├── main.cpp         # 入口：setup/loop、按键与状态机
+│   ├── app_state.cpp    # 应用状态与各页共享变量
+│   ├── display.cpp      # OLED 顶栏、电池、时间位图、开机/NTP 提示
+│   ├── menu_screen.cpp  # 主菜单绘制
+│   ├── clock_screen.cpp # 时钟页与 NTP 同步
+│   ├── calendar_screen.cpp # 日历月历
+│   ├── weather_screen.cpp  # 天气页与心知 API
+│   ├── timer_screen.cpp    # 倒计时与蜂鸣
+│   ├── stopwatch_screen.cpp # 秒表
+│   ├── web_config.cpp   # Web 天气城市配置
+│   ├── buttons.cpp      # 三键检测（单击/双击/长按）
+│   └── bitmap.h         # 大数字/小数字等位图
 ├── include/
-│   └── wifi_config.h # WiFi SSID/密码（需自行修改）
-├── .cursor/          # 编辑器/规则（可选）
-└── README.md         # 本说明
+│   ├── app_state.h
+│   ├── display.h
+│   ├── menu_screen.h
+│   ├── clock_screen.h
+│   ├── calendar_screen.h
+│   ├── weather_screen.h
+│   ├── timer_screen.h
+│   ├── stopwatch_screen.h
+│   ├── web_config.h
+│   ├── buttons.h
+│   └── wifi_config.h    # WiFi SSID/密码（需自行修改）
+├── .cursor/             # 编辑器/规则（可选）
+└── README.md            # 本说明
 ```
 
 ## 许可证与致谢
