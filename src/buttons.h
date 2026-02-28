@@ -11,9 +11,9 @@
 #define BTN_CENTER_PIN 19
 #define BTN_RIGHT_PIN   18
 
-#define BTN_DEBOUNCE_MS    25
+#define BTN_DEBOUNCE_MS    20
 #define BTN_LONG_PRESS_MS  600
-#define BTN_DOUBLE_MS      400
+#define BTN_DOUBLE_MS      280
 #define BTN_CLICK_MAX_MS   400
 
 enum ButtonEvent {

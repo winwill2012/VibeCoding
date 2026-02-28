@@ -1,7 +1,7 @@
 ---
 description: ESP32 代码更新完成后自动上传到芯片
 globs: src/**/*,platformio.ini,include/**/*
-alwaysApply: false
+alwaysApply: true
 ---
 
 # ESP32 代码更新后自动烧录

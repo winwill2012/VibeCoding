@@ -5,7 +5,8 @@
 #ifndef WIFI_CONFIG_H
 #define WIFI_CONFIG_H
 
-#define WIFI_SSID   "ChinaNet-GdPt"
+// #define WIFI_SSID   "ChinaNet-GdPt"
+#define WIFI_SSID   "Xiaomi_E15A"
 #define WIFI_PASS   "19910226"
 
 #endif
