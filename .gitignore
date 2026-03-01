@@ -1,2 +1,5 @@
 # PlatformIO 构建目录（项目已移至 oled-clock/）
 .pio
+
+# ESP-IDF 版本项目，不纳入本仓库提交
+oled-clock-idf/

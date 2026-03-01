@@ -9,8 +9,9 @@
 #include <math.h>
 
 #define BATTERY_ADC_PIN      34
-#define ADC_RAW_EMPTY        2604
-#define ADC_RAW_FULL         1864
+/* 原理图 R10=20K R11=10K：Vadc = Vbat/3。满电 4.2V→1.4V，空电 3.0V→1.0V (12bit@3.3V) */
+#define ADC_RAW_EMPTY        1241   /* 空电约 3.0V → 1.0V@ADC */
+#define ADC_RAW_FULL         1738   /* 满电约 4.2V → 1.4V@ADC */
 #define BIG_BYTES  3
 #define DOT_BYTES  1
 #define MINI_BYTES 1

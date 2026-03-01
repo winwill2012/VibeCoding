@@ -7,9 +7,9 @@
 
 #include <Arduino.h>
 
-#define BTN_LEFT_PIN   5
+#define BTN_LEFT_PIN   18
 #define BTN_CENTER_PIN 19
-#define BTN_RIGHT_PIN   18
+#define BTN_RIGHT_PIN   5
 
 #define BTN_DEBOUNCE_MS    20
 #define BTN_LONG_PRESS_MS  600
